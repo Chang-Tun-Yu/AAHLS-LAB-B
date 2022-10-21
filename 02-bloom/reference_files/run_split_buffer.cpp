@@ -68,20 +68,20 @@ void runOnFPGA(
 	unsigned subbuf_doc_sz = total_doc_size/2;
 	unsigned subbuf_inh_sz = total_doc_size/2;
  
-        // Declare sub-buffer regions to specify offset and size of sub-buffer   
+    // Declare sub-buffer regions to specify offset and size of sub-buffer   
 	cl_buffer_region subbuf_inh_info[2];
 	cl_buffer_region subbuf_doc_info[2];
 
-        // Declare sub-buffers
+    // Declare sub-buffers
 	cl::Buffer subbuf_inh_flags[2];
 	cl::Buffer subbuf_doc_words[2];
 
         
-        // Specify offset and size of sub-buffers 
-        subbuf_inh_info[0]={0, subbuf_inh_sz*sizeof(char)};
-        subbuf_inh_info[1]={subbuf_inh_sz*sizeof(char), subbuf_inh_sz*sizeof(char)};
-        subbuf_doc_info[0]={0, subbuf_doc_sz*sizeof(uint)};
-        subbuf_doc_info[1]={subbuf_doc_sz*sizeof(uint), subbuf_doc_sz*sizeof(uint)};
+	// Specify offset and size of sub-buffers 
+	subbuf_inh_info[0]={0, subbuf_inh_sz*sizeof(char)};
+	subbuf_inh_info[1]={subbuf_inh_sz*sizeof(char), subbuf_inh_sz*sizeof(char)};
+	subbuf_doc_info[0]={0, subbuf_doc_sz*sizeof(uint)};
+	subbuf_doc_info[1]={subbuf_doc_sz*sizeof(uint), subbuf_doc_sz*sizeof(uint)};
 
         // Create sub-buffers from buffers based on sub-buffer regions
 	subbuf_inh_flags[0] = buffer_output_inh_flags.createSubBuffer(CL_MEM_WRITE_ONLY, CL_BUFFER_CREATE_TYPE_REGION, &subbuf_inh_info[0]);
@@ -119,8 +119,8 @@ void runOnFPGA(
  
 	//  Set Kernel Arguments, Read, Enqueue Kernel and Write for first iteration
 		
-        total_size = total_doc_size/2;
-        load_filter=false;
+	total_size = total_doc_size/2;
+	load_filter=false;
 	kernel.setArg(3, total_size);
 	kernel.setArg(4, load_filter);
 	kernel.setArg(0, subbuf_inh_flags[0]);

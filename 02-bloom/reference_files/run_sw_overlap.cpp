@@ -134,7 +134,7 @@ void runOnFPGA(
 
 
 	// Create variables to keep track of number of words needed by CPU to compute score and number of words processed by FPGA such that CPU processing can overlap with FPGA
-        unsigned int curr_entry;
+    unsigned int curr_entry;
 	unsigned char inh_flags;
 	unsigned int  available = 0;
 	unsigned int  needed = 0;

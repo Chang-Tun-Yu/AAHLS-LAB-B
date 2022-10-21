@@ -64,11 +64,10 @@ void runOnFPGA(
     printf(" Processing %.3f MBytes of data\n", mbytes_total);
     printf(" Single_Buffer: Running with a single buffer of %.3f MBytes for FPGA processing\n",mbytes_total); 
 
-    // Create events for read,compute and write
-    
-        vector<cl::Event> wordWait;
-        vector<cl::Event> krnlWait;
-        vector<cl::Event> flagWait;
+    // Create events for read,compute and writeSS
+    vector<cl::Event> wordWait;
+    vector<cl::Event> krnlWait;
+    vector<cl::Event> flagWait;
 	cl::Event buffDone, krnlDone, flagDone;
 
     printf("--------------------------------------------------------------------\n");
@@ -80,7 +79,7 @@ void runOnFPGA(
 
 	// Load the bloom filter and input document words buffers
 	q.enqueueMigrateMemObjects({buffer_bloom_filter, buffer_input_doc_words}, 0,NULL,&buffDone);
-        wordWait.push_back(buffDone);
+    wordWait.push_back(buffDone);
 
 	// Start the FPGA compute
 	load_filter = true;

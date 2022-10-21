@@ -114,7 +114,7 @@ void runOnFPGA(
 	krnlWait.push_back(krnlDone);
  
 	// Set Kernel arguments. Read, Enqueue Kernel and Write for each iteration
-        for (int i=0; i<num_iter; i++) 
+    for (int i=0; i<num_iter; i++) 
 	{
 		cl::Event buffDone, krnlDone, flagDone;
 		total_size = subbuf_doc_info[i].size / sizeof(uint);

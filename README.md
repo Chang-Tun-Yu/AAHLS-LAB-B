@@ -12,4 +12,4 @@
 * *wdb
 * *dcp
 
-you can obtain these files by building the model (use Makefile)
+you can obtain these files by building the project (use Makefile)
